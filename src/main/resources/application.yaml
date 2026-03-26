@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/inventory_db
+    username: inventory_user
+    password: inventory_pass
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+#  flyway:
+#    enabled: true
+#    locations: classpath:db/migration
+#    baseline-on-migrate: false
+logging:
+  level:
+    org.hibernate.SQL: DEBUG           # shows queries in dev
+    org.hibernate.orm.jdbc.bind: TRACE # shows bind parameters
+
+
+jwt:
+
+  # 1 day in milliseconds
