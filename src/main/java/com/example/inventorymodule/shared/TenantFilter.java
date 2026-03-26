@@ -37,4 +37,17 @@ public class TenantFilter  extends OncePerRequestFilter {
             TenantContext.clear();   // always runs — even on exception
         }
     }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        String path = request.getRequestURI();
+
+        // If the path starts with /admin/, return true to SKIP the tenant check
+        if (path.startsWith("/admin/")) {
+            return true;
+        }
+
+        // Otherwise, return false to run the filter normally
+        return false;
     }
+}
